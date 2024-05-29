@@ -42,7 +42,7 @@ function Locations() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {locations.map((item: any) => (
           <LocationCard key={item.id} location={item} />
         ))}

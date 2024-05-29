@@ -1,8 +1,9 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function CharacterCard(props: any) {
-  const { name, image, status, species, location, episode } = props.character;
+  const { id, name, image, status, species, location, episode } =
+    props.character;
 
   const [firstEpisode, setFirstEpisode] = useState("");
 
@@ -26,9 +27,12 @@ function CharacterCard(props: any) {
       />
 
       <div className="flex flex-col justify-between p-4 pl-8 leading-normal">
-        <h5 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <Link
+          to={`/characters/${id}`}
+          className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-[#40b5cb]"
+        >
           {name}
-        </h5>
+        </Link>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {status} - {species}
         </p>
