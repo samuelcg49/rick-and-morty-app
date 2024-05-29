@@ -42,7 +42,7 @@ function Episodes() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
         {episodes.map((item: any) => (
           <EpisodeCard key={item.id} episode={item} />
         ))}

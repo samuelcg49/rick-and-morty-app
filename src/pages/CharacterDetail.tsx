@@ -16,8 +16,6 @@ function CharacterDetail() {
         `https://rickandmortyapi.com/api/character/${id}`
       );
       const characterData = response.data;
-      console.log(characterData);
-
       setCharacter(characterData);
 
       const episodesPromises = characterData.episode.map((episodeURL: string) =>
@@ -31,7 +29,7 @@ function CharacterDetail() {
       if (characterData.location.url) {
         const locationResponse = await axios.get(characterData.location.url);
         const locationData = locationResponse.data;
-        console.log(locationData);
+
         setLocation(locationData);
       }
     } catch (error) {
@@ -63,7 +61,9 @@ function CharacterDetail() {
             Episodes
           </h2>
           {episodes.map((item: any) => (
-            <EpisodeCard key={item.id} episode={item} />
+            <div className="mb-7">
+              <EpisodeCard key={item.id} episode={item} />
+            </div>
           ))}
         </div>
         <div>
