@@ -4,15 +4,13 @@ import { useState } from "react";
 function CharacterCard(props: any) {
   const { name, image, status, species, location, episode } = props.character;
 
-  const [lastEpisode, setLastEpisode] = useState("");
+  const [firstEpisode, setFirstEpisode] = useState("");
 
   const fetchEpisdoes = async () => {
-    const index = episode.length - 1;
-
-    const response = await fetch(episode[index]);
+    const response = await fetch(episode[0]);
     const data = await response.json();
 
-    setLastEpisode(data.name);
+    setFirstEpisode(data.name);
   };
 
   useEffect(() => {
@@ -41,7 +39,7 @@ function CharacterCard(props: any) {
         <p className="mt-4 font-bold text-gray-700 dark:text-gray-400">
           First seen in:
         </p>
-        <p>{lastEpisode}</p>
+        <p>{firstEpisode}</p>
       </div>
     </div>
   );
