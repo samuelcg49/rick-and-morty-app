@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 import axios from "axios";
-import Pagination from "../components/pagination";
+import Pagination from "../components/Pagination";
 
 function Characters() {
   const [page, setPage] = useState(1);
