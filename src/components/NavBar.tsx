@@ -129,7 +129,7 @@ function NavBar() {
                   destination="/characters"
                   name="Characters"
                   active={
-                    location.pathname === "/characters" ||
+                    location.pathname.startsWith("/characters") ||
                     location.pathname === "/"
                   }
                 />
@@ -138,14 +138,14 @@ function NavBar() {
                 <NavItem
                   destination="/episodes"
                   name="Episodes"
-                  active={location.pathname === "/episodes"}
+                  active={location.pathname.startsWith("/episodes")}
                 />
               </li>
               <li>
                 <NavItem
                   destination="/locations"
                   name="Locations"
-                  active={location.pathname === "/locations"}
+                  active={location.pathname.startsWith("/locations")}
                 />
               </li>
             </ul>
