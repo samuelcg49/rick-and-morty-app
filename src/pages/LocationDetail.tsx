@@ -15,7 +15,7 @@ function LocationDetail() {
       );
       const locationData = response.data;
       setLocation(locationData);
-      console.log(locationData);
+
       const charactersPromises = locationData.residents.map(
         (characterURL: string) => axios.get(characterURL)
       );
@@ -27,6 +27,7 @@ function LocationDetail() {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetchLocation();
   }, [id]);

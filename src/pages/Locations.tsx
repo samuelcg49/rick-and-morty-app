@@ -36,7 +36,6 @@ function Locations() {
 
   const paginaSiguiente = () => {
     const paginaSiguiente = page;
-
     setPage(paginaSiguiente + 1);
   };
 
