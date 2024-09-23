@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import NavItem from "../common/NavItem";
 import { useSearch } from "../context/SearchContext"; // Importa el contexto
-import { useState } from "react";
+
 
 function NavBar() {
   const location = useLocation();
