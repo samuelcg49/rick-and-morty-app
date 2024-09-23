@@ -3,12 +3,16 @@ import { useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 import axios from "axios";
 import Pagination from "../components/Pagination";
+import { useSearch } from '../context/SearchContext';
+
 
 function Characters() {
   const [page, setPage] = useState(1);
   const [character, setCharacter] = useState([]);
+  const { searchTerm } = useSearch() || {};
+  
+  
 
-  const characterURL = `https://rickandmortyapi.com/api/character?page=${page}`;
 
   const paginaAnterior = () => {
     const paginaAterior = page;
@@ -27,8 +31,15 @@ function Characters() {
   };
 
   const fetchData = async () => {
+    
+    if (searchTerm == "" || searchTerm == null) { // Si no hay busqueda, el varlor es vacío
+      var busqueda = ""
+    }else{
+      busqueda = `?name=${searchTerm}&`; // Si hay busqueda, se añade el parámetro de búsqueda
+    }
+
     await axios
-      .get(characterURL)
+      .get(`https://rickandmortyapi.com/api/character/${busqueda}?page=${page}`)
       .then((response) => {
         setCharacter(response.data.results);
       })
@@ -39,7 +50,8 @@ function Characters() {
 
   useEffect(() => {
     fetchData();
-  }, [page]);
+  }, [page, searchTerm]);
+
 
   return (
     <>

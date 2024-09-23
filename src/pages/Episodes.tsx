@@ -2,16 +2,24 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import EpisodeCard from "../components/EpisodeCard";
 import Pagination from "../components/Pagination";
+import { useSearch } from '../context/SearchContext';
 
 function Episodes() {
   const [page, setPage] = useState(1);
   const [episodes, setEpisodes] = useState([]);
 
-  const episodeURL = `https://rickandmortyapi.com/api/episode?page=${page}`;
+  const { searchTerm } = useSearch() || {};
+
 
   const fetchData = async () => {
+    if (searchTerm == "" || searchTerm == null) { // Si no hay busqueda, el varlor es vacío
+      var busqueda = ""
+    }else{
+      busqueda = `?name=${searchTerm}&`; // Si hay busqueda, se añade el parámetro de búsqueda
+    }
+
     await axios
-      .get(episodeURL)
+      .get(`https://rickandmortyapi.com/api/episode/${busqueda}?page=${page}`)
       .then((response) => {
         setEpisodes(response.data.results);
       })
@@ -22,7 +30,7 @@ function Episodes() {
 
   useEffect(() => {
     fetchData();
-  }, [page]);
+  }, [page, searchTerm]);
 
   const paginaAnterior = () => {
     const paginaAterior = page;
