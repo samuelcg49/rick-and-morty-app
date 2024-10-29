@@ -10,9 +10,6 @@ function Characters() {
   const [page, setPage] = useState(1);
   const [character, setCharacter] = useState([]);
   const { searchTerm } = useSearch() || {};
-  
-  
-
 
   const paginaAnterior = () => {
     const paginaAterior = page;
