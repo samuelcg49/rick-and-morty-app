@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function CharacterCard(props: any) {
-  const { id, name, image, status, species, location, episode } =
-    props.character;
+  const { id, name, image, status, species, location, episode } = props.character;
 
   const [firstEpisode, setFirstEpisode] = useState<any>([]);
   var episodeID = 0;
