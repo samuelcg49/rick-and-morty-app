@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import EpisodeCard from "../components/EpisodeCard";
 import LocationCard from "../components/LocationCard";
+import HeaderCharacterDetail from "../components/HeaderCharacterDetail";
 import axios from "axios";
 
 function CharacterDetail() {
@@ -47,14 +48,7 @@ function CharacterDetail() {
 
   return (
     <>
-      <div className="flex flex-col items-center">
-        <img
-          className="rounded-full w-40 h-40 mb-5 shadow-xl border-2 border-green-400"
-          src={character.image}
-          alt={character.name}
-        />
-        <h1 className="mb-5 text-4xl font-bold">{character.name}</h1>
-      </div>
+    <HeaderCharacterDetail character={character} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
         <div>
           <h2 className="my-5 text-2xl font-bold justify-center flex">
